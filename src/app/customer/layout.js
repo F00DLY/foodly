@@ -1,7 +1,7 @@
-import Footer from '@/components/custom/Footer';
-import Header from '@/components/custom/Header';
-import RestList from '@/components/custom/RestList';
-import Slogan from '@/components/custom/Slogan';
+import Footer from '@/src/components/custom/Footer';
+import Header from '@/src/components/custom/Header';
+import RestList from '@/src/components/custom/RestList';
+import Slogan from '@/src/components/custom/Slogan';
 import React from 'react';
 
 const Layout = ({ children }) => {

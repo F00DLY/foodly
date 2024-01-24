@@ -1,24 +1,23 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/src/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@/src/components/ui/card';
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/src/components/ui/input';
 
-const Customer = () => {
+const Restaurant = () => {
   return (
     <Card className='w-[80%] md:w-[60%] lg:w-[40%] logIn rounded-3xl backprim text-white'>
       <CardHeader className='flex-row items-center text-white justify-between backsec rounded-t-3xl mb-10'>
-        <CardTitle>Login As Customer</CardTitle>
-        <Link href='/login/restaurant'>
+        <CardTitle>Login As Restaurant</CardTitle>
+        <Link href='/login/customer'>
           <Button variant='outline' className='backprim rounded-2xl h-12'>
-            As a Restaurant
+            As a Customer
           </Button>
         </Link>
       </CardHeader>
@@ -54,4 +53,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default Restaurant;

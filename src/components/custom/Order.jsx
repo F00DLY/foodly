@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
+} from '../ui/accordion';
 
 const Order = () => {
   const [rating, setRating] = useState(0);

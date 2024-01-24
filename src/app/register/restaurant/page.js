@@ -1,24 +1,23 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/src/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@/src/components/ui/card';
+import { Input } from '@/src/components/ui/input';
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 
-const Customer = () => {
+const Restaurant = () => {
   return (
     <Card className='w-[80%] md:w-[60%] lg:w-[40%] logIn rounded-3xl backprim text-white'>
       <CardHeader className='flex-row items-center text-white justify-between backsec rounded-t-3xl mb-10'>
-        <CardTitle>Register As Customer</CardTitle>
-        <Link href='/register/restaurant'>
+        <CardTitle>Register As Restaurant</CardTitle>
+        <Link href='/register/customer'>
           <Button variant='outline' className='backprim rounded-2xl h-12'>
-            As a Restaurant
+            As a Customer
           </Button>
         </Link>
       </CardHeader>
@@ -29,7 +28,7 @@ const Customer = () => {
               <Input
                 className='rounded-full h-14 bg-[ rgb(250, 248, 244)] font-bold text-2xl pl-5'
                 id='Name'
-                placeholder='Your Name'
+                placeholder='Your Restaurant Name'
               />
             </div>
             <div className='flex flex-col space-y-1.5 w-[80%] mx-auto'>
@@ -57,7 +56,7 @@ const Customer = () => {
         </form>
       </CardContent>
       <CardFooter className='flex text-white md:justify-between justify-center flex-wrap-reverse'>
-        <Link href='/login/customer'>
+        <Link href='/login/restaurant'>
           <Button className='text-white text-xl font-bold' variant='secondary'>
             Already have an account?
           </Button>
@@ -68,4 +67,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default Restaurant;

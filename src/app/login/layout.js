@@ -1,5 +1,5 @@
-import Footer from '@/components/custom/Footer';
-import Navbar from '@/components/custom/Navbar';
+import Footer from '@/src/components/custom/Footer';
+import Navbar from '@/src/components/custom/Navbar';
 import React from 'react';
 
 const Layout = ({ children }) => {
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '100vh',
+          minHeight: '80vh',
         }}
       >
         <div className='text-wrap md:w-[40%] w-[0%] forprim lg:text-6xl md:text-4xl sm:text-6xl text-4xl  font-semibold'>

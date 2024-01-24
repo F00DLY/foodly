@@ -1,4 +1,4 @@
-import Dish from '@/components/custom/Dish';
+import Dish from '@/src/components/custom/Dish';
 import React from 'react';
 
 const Restaurant = () => {

@@ -8,8 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+} from '../ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 const Header = () => {
   return (
@@ -23,7 +23,7 @@ const Header = () => {
         <Link href='/'>
           <span className='hover:scale-105 font-bold'>Home</span>
         </Link>
-        <Link href='/'>
+        <Link href='/customer/restaurants'>
           <span className='hover:scale-105 '>Restaurants</span>
         </Link>
         <Link href='/customer/orders'>
@@ -46,10 +46,21 @@ const Header = () => {
         <DropdownMenuContent className='h-[50vh] w-[30vh]'>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <Link href='/customer/restaurants'>
+            <DropdownMenuItem>Restaurants</DropdownMenuItem>
+          </Link>
+          <Link href='/customer/orders'>
+            <DropdownMenuItem>Orders</DropdownMenuItem>
+          </Link>
+          <Link href='/register/customer'>
+            <DropdownMenuItem>Register</DropdownMenuItem>
+          </Link>
+          <Link href='/login/customer'>
+            <DropdownMenuItem>Login</DropdownMenuItem>
+          </Link>
+          <Link href='/'>
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </Link>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

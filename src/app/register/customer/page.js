@@ -1,23 +1,23 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/src/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+} from '@/src/components/ui/card';
 import Link from 'next/link';
+import { Input } from '@/src/components/ui/input';
 
-const Restaurant = () => {
+const Customer = () => {
   return (
     <Card className='w-[80%] md:w-[60%] lg:w-[40%] logIn rounded-3xl backprim text-white'>
       <CardHeader className='flex-row items-center text-white justify-between backsec rounded-t-3xl mb-10'>
-        <CardTitle>Register As Restaurant</CardTitle>
-        <Link href='/register/customer'>
+        <CardTitle>Register As Customer</CardTitle>
+        <Link href='/register/restaurant'>
           <Button variant='outline' className='backprim rounded-2xl h-12'>
-            As a Customer
+            As a Restaurant
           </Button>
         </Link>
       </CardHeader>
@@ -28,7 +28,7 @@ const Restaurant = () => {
               <Input
                 className='rounded-full h-14 bg-[ rgb(250, 248, 244)] font-bold text-2xl pl-5'
                 id='Name'
-                placeholder='Your Restaurant Name'
+                placeholder='Your Name'
               />
             </div>
             <div className='flex flex-col space-y-1.5 w-[80%] mx-auto'>
@@ -56,7 +56,7 @@ const Restaurant = () => {
         </form>
       </CardContent>
       <CardFooter className='flex text-white md:justify-between justify-center flex-wrap-reverse'>
-        <Link href='/login/restaurant'>
+        <Link href='/login/customer'>
           <Button className='text-white text-xl font-bold' variant='secondary'>
             Already have an account?
           </Button>
@@ -67,4 +67,4 @@ const Restaurant = () => {
   );
 };
 
-export default Restaurant;
+export default Customer;
