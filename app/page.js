@@ -5,6 +5,7 @@ import Header from '../components/custom/Header';
 import DishList from '@/components/custom/DishList';
 import RestList from '@/components/custom/RestList';
 import Slogan from '@/components/custom/Slogan';
+import Footer from '@/components/custom/Footer';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <DishList />
       <RestList />
       <Slogan />
+      <Footer />
     </>
   );
 }

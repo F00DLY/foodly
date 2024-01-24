@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: rgb(250, 248, 244) 0% 100%;
+    --background: rgb(250, 248, 244);
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -33,6 +33,11 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    /* Star rating */
+    --star-size: 60px;
+    --star-color: #fff;
+    --star-background: #fc0;
   }
 
   .dark {
@@ -83,9 +88,34 @@
 .backsec {
   background-color: var(--secondary);
 }
+.backback {
+  background-color: var(--background);
+}
 .forprim {
   color: var(--primary);
 }
 .forsec {
   color: var(--secondary);
+}
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  font-family: Times;
+
+  &::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--star-background) var(--percent),
+      var(--star-color) var(--percent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.on {
+  color: #ffff00;
+}
+.off {
+  color: #ccc;
 }

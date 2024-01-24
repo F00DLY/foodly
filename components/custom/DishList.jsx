@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const DishList = () => {
   return (
@@ -36,18 +37,20 @@ const DishList = () => {
         </CardHeader>
       </Card>
       <CardHeader className='h-[10vh] w-[20%] justify-center p-0'>
-        <div className='h-[8vh] hover:scale-105 w-[100%] flex flex-row justify-between p-2 items-center backprim rounded-[5vh]'>
-          <span className='text-white xl:ml-16 lg:ml-10 ml-5 text-nowrap'>
-            See All
-          </span>
-          <Button className='h-[7vh] w-[7vh] p-0 backsec rounded-full grid content-center'>
-            <img
-              className='h-[5vh] w-[5vh] invert'
-              src='img/right.svg'
-              alt=''
-            />
-          </Button>
-        </div>
+        <Link href='/customer/restaurant'>
+          <div className='h-[8vh] hover:scale-105 w-[100%] flex flex-row justify-between p-2 items-center backprim rounded-[5vh]'>
+            <span className='text-white xl:ml-16 lg:ml-10 ml-5 text-nowrap'>
+              See All
+            </span>
+            <span className='h-[7vh] w-[7vh] p-0 backsec rounded-full flex items-center justify-center'>
+              <img
+                className='h-[5vh] w-[5vh] invert'
+                src='img/right.svg'
+                alt=''
+              />
+            </span>
+          </div>
+        </Link>
         <CardTitle className='text-4xl font-bold p-0 forsec'>
           OFFERED BY
         </CardTitle>
