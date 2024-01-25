@@ -72,9 +72,9 @@ const AddMenu = ({ name }) => {
       </DialogTrigger>
       <DialogContent className='sm:max-w-[425px] bg-white'>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Add Menu Item</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Add a new menu item to your restaurant
           </DialogDescription>
         </DialogHeader>
         <div className='grid gap-4 py-4'>
