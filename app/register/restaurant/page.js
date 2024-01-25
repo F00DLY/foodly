@@ -42,7 +42,7 @@ const Restaurant = () => {
         // Handle successful registration
         const data = await response.json();
         toast.success('User registered successfully');
-        window.location.replace('/restaurant/orders');
+        window.location.replace('/restaurant/orders' + Restaurantname);
         // console.log('User registered successfully:', data);
       } else {
         // Handle registration error
