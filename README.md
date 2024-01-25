@@ -79,3 +79,24 @@ As Foodly is currently in the prototype stage, some features are yet to be imple
 - **Enhanced Restaurant Order Management:**
   - Provide a comprehensive view of order details for restaurants.
   - Allow restaurants to update order status to reflect progress (e.g., pending, on the way).
+
+## Team Members
+
+### Frontend Developer:
+
+- **Name:** Vardan Rastogi
+- **Enrollment Number:** 22UME119
+
+### Backend Developer:
+
+- **Name:** Pawan Kumar
+- **Enrollment Number:** 22UEE187
+
+### Designer:
+
+- **Name:** Vasu Sharma
+- **Enrollment Number:** 22UPE087
+
+## About Our Team
+
+Our team consists of dedicated individuals who are passionate about creating innovative solutions to enhance the user experience of Foodly. Each team member brings unique skills and expertise to the project, collaborating closely to deliver a seamless and intuitive food ordering platform for our college community.
