@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Customer = () => {
   const [Name, setName] = useState('');
@@ -21,35 +23,30 @@ const Customer = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         'http://localhost:8000/api/v1/users/register',
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Name,
-            email,
-            mobail,
-            password,
-          }),
+          Name,
+          email,
+          mobail,
+          password,
         }
       );
 
-      if (response.ok) {
+      if (response.status === 201) {
         // Handle successful registration
-        const data = await response.json();
         toast.success('User registered successfully');
-        window.location.replace('/');
+        window.location.replace('/login/customer');
       } else {
         // Handle registration error
-        const errorData = await response.json();
-        toast.error('User registration failed' + errorData.message);
+        // const errorData = await response.json();
+        toast.error('User registration failed' + response.status);
+        console.log('errorData.message');
       }
     } catch (error) {
       // Handle registration error
       toast.error('User registration failed');
+      console.log(error);
     }
   };
 

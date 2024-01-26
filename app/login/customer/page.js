@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Customer = () => {
   const [email, setEmail] = useState('');
@@ -19,20 +21,22 @@ const Customer = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        'http://localhost:8000/api/v1/users/login',
+        {
           email,
           password,
-        }),
-      });
+        }
+      );
 
-      if (response.ok) {
+      if (response.status === 201) {
         // Handle successful login
-        const data = await response.json();
+        console.log(response.data.data.user);
+        Cookies.set('user', response.data.data.user._id);
+        Cookies.set('name', response.data.data.user.name);
+        Cookies.set('accessToken', response.data.data.accessToken);
+        Cookies.set('refreshToken', response.data.data.refreshToken);
+
         toast.success('User logged in successfully');
         window.location.replace('/');
       } else {

@@ -5,9 +5,9 @@ import { asynchandler } from '../utils/asynchendller.js';
 
 const updateManu = asynchandler(async (req, res) => {
   try {
-    const Restaurantname = req.body.restaurantName.name;
+    const restaurantId = req.restaurant._id;
 
-    const restaurantOwner = await Restaurant.findOne({ Restaurantname });
+    const restaurantOwner = await Restaurant.findById(restaurantId);
     if (!restaurantOwner) {
       throw new ApiError(404, 'Restaurant owner not found');
     }

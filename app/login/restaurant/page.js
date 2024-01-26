@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Restaurant = () => {
   const [email, setEmail] = useState('');
@@ -19,34 +21,30 @@ const Restaurant = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         'http://localhost:8000/api/v1/restaurant/login',
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+          email,
+          password,
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         // Handle successful login
-        const data = await response.json();
-        // console.log('data');
-        // console.log(data.data.restaurant);
-        toast.success('User logged in successfully');
+        Cookies.set('user', response.data.data.restaurant._id);
+        Cookies.set('name', response.data.data.restaurant.Restaurantname);
+        Cookies.set('accessToken', response.data.data.accessToken);
+        Cookies.set('refreshToken', response.data.data.refreshToken);
 
+        toast.success('User logged in successfully');
         window.location.replace(
-          '/restaurant/menu/' + data.data.restaurant.Restaurantname
+          '/restaurant/menu/' + response.data.data.restaurant.Restaurantname
         );
       } else {
         // Handle login error
-        const errorData = await response.json();
-        toast.error('User login failed' + errorData.message);
+        // const errorData = await response.json();
+        toast.error('User login failed');
+        console.error('Login failed:', response);
       }
     } catch (error) {
       console.error('Error during login:', error);

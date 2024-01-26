@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/select';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 const MenuItem = ({ menuItem, Restaurantname }) => {
   const menuItemId = menuItem._id;
@@ -19,6 +20,11 @@ const MenuItem = ({ menuItem, Restaurantname }) => {
         {
           Restaurantname,
           menuItemId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer${Cookies.get('accessToken')}`,
+          },
         }
       );
 

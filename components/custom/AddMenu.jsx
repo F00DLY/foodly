@@ -13,6 +13,8 @@ import {
 } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const AddMenu = ({ name }) => {
   const [formData, setFormData] = useState({
@@ -32,31 +34,59 @@ const AddMenu = ({ name }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(
+      const response = await axios.post(
         'http://localhost:8000/api/v1/restaurant/menu-update',
+        formData,
         {
-          method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            Authorization: `Bearer${Cookies.get('accessToken')}`,
           },
-          body: JSON.stringify(formData),
         }
       );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Menu update failed:', errorData);
-        alert('Menu update failed' + errorData.message);
-      } else {
-        const responseData = await response.json();
-        // console.log('Menu updated successfully:', responseData);
-        toast.success('Menu updated successfully');
+      if (response.status === 200) {
+        console.log(response.data.data);
+        toast.success('Menu added successfully');
+        setFormData({
+          name: '',
+          description: '',
+          price: '',
+          restaurantName: { name },
+        });
         window.location.reload();
+      } else {
+        console.error('Menu add failed: 1', response.data);
+        toast.error('Menu add failed ' + response.data.message);
       }
     } catch (error) {
-      console.error(error);
-      alert('Error during menu update' + error.message);
+      console.error('Menu add failed:', error);
+      toast.error('Menu add failed ' + error.message);
     }
+    // try {
+    //   const response = await fetch(
+    //     'http://localhost:8000/api/v1/restaurant/menu-update',
+    //     {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(formData),
+    //     }
+    //   );
+
+    //   if (!response.ok) {
+    //     const errorData = await response.json();
+    //     console.error('Menu update failed:', errorData);
+    //     alert('Menu update failed' + errorData.message);
+    //   } else {
+    //     const responseData = await response.json();
+    //     // console.log('Menu updated successfully:', responseData);
+    //     toast.success('Menu updated successfully');
+    //     window.location.reload();
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   alert('Error during menu update' + error.message);
+    // }
   };
 
   return (

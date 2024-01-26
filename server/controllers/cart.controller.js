@@ -113,12 +113,10 @@ const removecartitem = asynchandler(async (req, res) => {
         .status(error.statusCode)
         .json({ success: false, message: error.message });
     } else {
-      return res
-        .status(500)
-        .json({
-          success: false,
-          message: 'Internal server error. Please try again later.',
-        });
+      return res.status(500).json({
+        success: false,
+        message: 'Internal server error. Please try again later.',
+      });
     }
   }
 });

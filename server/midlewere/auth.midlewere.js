@@ -7,7 +7,7 @@ export const verifyjwt = asynchandler(async (req, res, next) => {
   try {
     const token =
       req.cookies?.accessToken ||
-      (req.header('Authorization')?.replace('Bearer ', '') || '').trim();
+      req.header('Authorization')?.replace('Bearer', '');
 
     // Log token for debugging
     console.log('||||Token||||');
@@ -31,6 +31,7 @@ export const verifyjwt = asynchandler(async (req, res, next) => {
     if (!user) {
       throw new ApiError(401, 'Invalid access token: User not found');
     }
+    console.log('User:', user);
 
     // Attach user information to the request
     req.user = user;

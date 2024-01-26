@@ -11,6 +11,8 @@ import {
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Restaurant = () => {
   const [Restaurantname, setName] = useState('');
@@ -22,27 +24,35 @@ const Restaurant = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         'http://localhost:8000/api/v1/restaurant/register',
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Restaurantname,
-            email,
-            mobail,
-            password,
-          }),
+          Restaurantname,
+          email,
+          mobail,
+          password,
         }
       );
+      // fetch(
+      //   'http://localhost:8000/api/v1/restaurant/register',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       Restaurantname,
+      //       email,
+      //       mobail,
+      //       password,
+      //     }),
+      //   }
+      // );
 
-      if (response.ok) {
+      if (response.status === 201) {
         // Handle successful registration
-        const data = await response.json();
         toast.success('User registered successfully');
-        window.location.replace('/restaurant/menu' + Restaurantname);
+        window.location.replace('/login/restaurant');
         // console.log('User registered successfully:', data);
       } else {
         // Handle registration error

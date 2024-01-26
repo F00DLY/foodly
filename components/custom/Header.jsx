@@ -12,31 +12,47 @@ import {
 } from '../ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+  // parse cookies string to object
+  const cookies = Cookies.get('user');
   const handleLogout = async () => {
     try {
       console.log('Attempting logout...');
 
       const response = await axios.post(
         'http://localhost:8000/api/v1/users/logOut',
+        {}, // Pass an empty object as the request body if not needed
         {
-          withCredentials: true, // Include cookies in the request
+          headers: {
+            Authorization: `Bearer${Cookies.get('accessToken')}`,
+          },
         }
       );
+
+      Cookies.remove('user');
+      Cookies.remove('name');
+      Cookies.remove('accessToken');
+      Cookies.remove('refreshToken');
 
       console.log('Logout response:', response);
 
       if (response.status === 200) {
         console.log('User logged out successfully');
-        alert('User logged out successfully');
+        toast.success('User logged out successfully');
+        // alert('User logged out successfully');
+        window.location.replace('/');
       } else {
         console.error('Logout failed:', response.data);
-        alert('Logout failed ' + response.data.message);
+        // alert('Logout failed ' + response.data.message);
+        toast.error('Logout failed ' + response.data.message);
       }
     } catch (error) {
       console.error('Error during logout:', error);
-      alert('Error during logout ' + error.message);
+      // alert('Error during logout ' + error.message);
+      toast.error('Error during logout ' + error.message);
     }
   };
 
@@ -57,12 +73,18 @@ const Header = () => {
         <Link href='/customer/orders'>
           <span className='hover:scale-105 '>Orders</span>
         </Link>
-        <Link href='/register/customer'>
-          <span className='hover:scale-105 '>Register</span>
-        </Link>
-        <Link href='/login/customer'>
-          <span className='hover:scale-105 '>Login</span>
-        </Link>
+        {cookies === undefined ? (
+          <>
+            <Link href='/register/customer'>
+              <span className='hover:scale-105 '>Register</span>
+            </Link>
+            <Link href='/login/customer'>
+              <span className='hover:scale-105 '>Login</span>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <DropdownMenu className='w-[20%]'>
         <DropdownMenuTrigger className='w-16 h-16 rounded-full'>
@@ -80,17 +102,24 @@ const Header = () => {
           <Link href='/customer/orders'>
             <DropdownMenuItem>Orders</DropdownMenuItem>
           </Link>
-          <Link href='/register/customer'>
-            <DropdownMenuItem>Register</DropdownMenuItem>
-          </Link>
-          <Link href='/login/customer'>
-            <DropdownMenuItem>Login</DropdownMenuItem>
-          </Link>
+          {cookies === undefined ? (
+            <>
+              <Link href='/register/customer'>
+                <DropdownMenuItem>Register</DropdownMenuItem>
+              </Link>
+              <Link href='/login/customer'>
+                <DropdownMenuItem>Login</DropdownMenuItem>
+              </Link>
+            </>
+          ) : (
+            <DropdownMenuItem>
+              <button onClick={handleLogout}>Logout</button>
+            </DropdownMenuItem>
+          )}
+
           {/* */}
           {/* <Link href='/'> */}
-          <DropdownMenuItem>
-            <button onClick={handleLogout}>Logout</button>
-          </DropdownMenuItem>
+
           {/* </Link> */}
         </DropdownMenuContent>
       </DropdownMenu>

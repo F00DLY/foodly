@@ -16,7 +16,7 @@ const userSchema = new Schema(
       lowercase: true,
       unique: true,
       trim: true,
-      match: [/^\s+@\s+\.\s+$/, 'Please fill a valid email address'],
+      match: [/^\S+@\S+\.\S+$/, 'Please fill a valid email address'],
     },
     picture: {
       type: String, // clpudnary url
