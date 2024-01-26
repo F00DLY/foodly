@@ -1,4 +1,6 @@
 // pages/cart.js
+import CartItem from '@/components/custom/CartItem';
+import { faker } from '@faker-js/faker';
 import React from 'react';
 
 const CartPage = () => {
@@ -19,25 +21,9 @@ const CartPage = () => {
     return (
       <div className='container mx-auto p-4'>
         <h2 className='text-2xl font-semibold mb-4'>Your Cart</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div className='flex flex-col w-full mt-14'>
           {cartItems.map((item) => (
-            <div key={item.id} className='bg-white p-4 shadow-md rounded-md'>
-              <img
-                src={`/images/${item.image}`}
-                alt={item.name}
-                className='w-full h-40 object-cover mb-4'
-              />
-              <div className='flex justify-between items-center'>
-                <div>
-                  <h3 className='text-lg font-semibold'>{item.name}</h3>
-                  <p className='text-gray-600'>${item.price}</p>
-                  <p className='text-gray-600'>Quantity: {item.quantity}</p>
-                </div>
-                <button className='bg-blue-500 text-white px-3 py-1 rounded-md'>
-                  Remove
-                </button>
-              </div>
-            </div>
+            <CartItem key={item.id} item={item} />
           ))}
         </div>
       </div>

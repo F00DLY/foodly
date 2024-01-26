@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const Dish = ({ menuItem }) => {
+  const user = Cookies.get('user');
   const [count, setCount] = useState(0); // Initialize count state with 0
 
   // Function to increment count
@@ -80,12 +81,14 @@ const Dish = ({ menuItem }) => {
           -
         </button>
       </div>
-      <button
-        onClick={addCart}
-        class='bg-black text-white h-8 w-8 border-2 border-black text-lg'
-      >
-        +
-      </button>
+      {user != null && (
+        <button
+          onClick={addCart}
+          class='bg-black text-white h-8 w-8 border-2 border-black text-lg'
+        >
+          Add to cart
+        </button>
+      )}
     </div>
   );
 };
