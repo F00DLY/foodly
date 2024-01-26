@@ -11,15 +11,15 @@ Make sure you have the following installed on your machine:
 
 ## Getting Started
 
-1. Open two terminals, one in the root directory and the other in the `./server` directory.
+1. Open two terminals, one for site and the other for server.
 
-2. In the first terminal (root directory), run the following command to install dependencies:
+2. In the first terminal (site), run the following command to install dependencies:
 
    ```bash
    npm install
    ```
 
-3. In the second terminal (`./server` directory), run the following command to install server dependencies:
+3. In the second terminal (./server), run the following command to install server dependencies:
 
    ```bash
    cd server
@@ -97,6 +97,8 @@ As Foodly is currently in the prototype stage, some features are yet to be imple
 - **Name:** Vasu Sharma
 - **Enrollment Number:** 22UPE087
 
-## About Our Team
+---
 
-Our team consists of dedicated individuals who are passionate about creating innovative solutions to enhance the user experience of Foodly. Each team member brings unique skills and expertise to the project, collaborating closely to deliver a seamless and intuitive food ordering platform for our college community.
+If you have any questions or suggestions, feel free to [open an issue](https://github.com/lazy-taurus/foodly/issues) or [contact me](vardanrastogi1@gmail.com).
+
+---
