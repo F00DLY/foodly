@@ -29,10 +29,6 @@ const AddMenu = ({ name }) => {
       [id]: value,
     }));
   };
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     restaurantName: name,
-  //   }));
 
   const handleSubmit = async () => {
     try {
@@ -48,14 +44,12 @@ const AddMenu = ({ name }) => {
       );
 
       if (!response.ok) {
-        // Handle error responses from the server
         const errorData = await response.json();
         console.error('Menu update failed:', errorData);
         alert('Menu update failed' + errorData.message);
       } else {
-        // Menu update successful
         const responseData = await response.json();
-        console.log('Menu updated successfully:', responseData);
+        // console.log('Menu updated successfully:', responseData);
         toast.success('Menu updated successfully');
         window.location.reload();
       }

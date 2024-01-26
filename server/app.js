@@ -4,7 +4,12 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Replace with your client's URL
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: '16kb' }));
 app.use(express.urlencoded.apply({ extended: true, limit: '16kb' }));
 app.use(express.static('public'));

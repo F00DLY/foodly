@@ -33,8 +33,6 @@ const Customer = () => {
       if (response.ok) {
         // Handle successful login
         const data = await response.json();
-
-        localStorage.setItem('loggedInUser', JSON.stringify(data));
         toast.success('User logged in successfully');
         window.location.replace('/');
       } else {

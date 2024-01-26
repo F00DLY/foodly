@@ -10,7 +10,8 @@ export const verifyjwt = asynchandler(async (req, res, next) => {
       (req.header('Authorization')?.replace('Bearer ', '') || '').trim();
 
     // Log token for debugging
-    console.log('Token:', token);
+    console.log('||||Token||||');
+    console.log(token);
 
     // Check if the token is present
     if (!token) {

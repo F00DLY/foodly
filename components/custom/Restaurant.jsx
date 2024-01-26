@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import Link from 'next/link';
 import React from 'react';
 
@@ -10,7 +11,7 @@ const Restaurant = ({ name }) => {
           <img
             alt='Restaurant Card'
             className='h-full w-full object-cover rounded-md'
-            src='/img/pizza.jpg'
+            src={faker.image.urlLoremFlickr({ category: 'food' })}
           />
         </div>
         <div className='flex flex-col justify-evenly items-start px-1'>

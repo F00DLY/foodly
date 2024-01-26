@@ -14,30 +14,31 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import axios from 'axios';
 
 const Header = () => {
-  // const handleLogout = async () => {
-  //   try {
-  //     console.log('Attempting logout...');
+  const handleLogout = async () => {
+    try {
+      console.log('Attempting logout...');
 
-  //     const response = await axios.post(
-  //       'http://localhost:8000/api/v1/users/logOut'
-  //     );
+      const response = await axios.post(
+        'http://localhost:8000/api/v1/users/logOut',
+        {
+          withCredentials: true, // Include cookies in the request
+        }
+      );
 
-  //     console.log('Logout response:', response);
+      console.log('Logout response:', response);
 
-  //     if (response.status === 200) {
-  //       // Handle successful logout
-  //       console.log('User logged out successfully');
-  //       alert('User logged out successfully');
-  //     } else {
-  //       // Handle logout error
-  //       console.error('Logout failed:', response.data);
-  //       alert('Logout failed ' + response.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error during logout:', error);
-  //     alert('Error during logout ' + error.message);
-  //   }
-  // };
+      if (response.status === 200) {
+        console.log('User logged out successfully');
+        alert('User logged out successfully');
+      } else {
+        console.error('Logout failed:', response.data);
+        alert('Logout failed ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+      alert('Error during logout ' + error.message);
+    }
+  };
 
   return (
     <div className='w-[100%] h-25 flex flex-row justify-around items-center'>
@@ -85,10 +86,12 @@ const Header = () => {
           <Link href='/login/customer'>
             <DropdownMenuItem>Login</DropdownMenuItem>
           </Link>
-          {/* onClick={handleLogout} */}
-          <Link href='/'>
-            <DropdownMenuItem>Logout</DropdownMenuItem>
-          </Link>
+          {/* */}
+          {/* <Link href='/'> */}
+          <DropdownMenuItem>
+            <button onClick={handleLogout}>Logout</button>
+          </DropdownMenuItem>
+          {/* </Link> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

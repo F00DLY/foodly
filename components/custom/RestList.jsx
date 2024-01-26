@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
 import axios from 'axios';
+import { faker } from '@faker-js/faker';
 
 const RestList = () => {
   const [restaurantNames, setRestaurantNames] = useState([]);
@@ -14,7 +15,7 @@ const RestList = () => {
         const response = await axios.post(endpoint);
         const names = response.data.restaurants;
         setRestaurantNames(names);
-        console.log('Restaurant names:', names);
+        // console.log('Restaurant names:', names);
       } catch (error) {
         console.error('Error fetching restaurant names:', error.message);
       }
@@ -29,7 +30,7 @@ const RestList = () => {
           <Link href={'/customer/restaurant/' + restaurantNames[0].name}>
             <img
               className='h-[30vh] w-full object-cover'
-              src='/img/pizza.jpg'
+              src={faker.image.urlLoremFlickr({ category: 'food' })}
               alt=''
             />
             <CardHeader className='h-[10vh] items-center justify-center p-0'>
@@ -43,7 +44,7 @@ const RestList = () => {
           <Link href={'/customer/restaurant/' + restaurantNames[1].name}>
             <img
               className='h-[30vh] w-full object-cover'
-              src='/img/pizza.jpg'
+              src={faker.image.urlLoremFlickr({ category: 'food' })}
               alt=''
             />
             <CardHeader className='h-[10vh] items-center justify-center p-0 '>
@@ -57,7 +58,7 @@ const RestList = () => {
           <Link href={'/customer/restaurant/' + restaurantNames[2].name}>
             <img
               className='h-[30vh] w-full object-cover'
-              src='/img/pizza.jpg'
+              src={faker.image.urlLoremFlickr({ category: 'food' })}
               alt=''
             />
             <CardHeader className='h-[10vh] items-center justify-center p-0'>

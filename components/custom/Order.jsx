@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../ui/accordion';
+import { faker } from '@faker-js/faker';
 
 const Order = () => {
   const [rating, setRating] = useState(0);
@@ -15,13 +16,13 @@ const Order = () => {
       <AccordionItem value='item-1'>
         <AccordionTrigger className='item flex flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
           <div className='flex flex-row items-center gap-5'>
-            {/* <div className=' h-[15vh] w-[15vh]'>
+            <div className=' h-[15vh] w-[15vh]'>
               <img
                 className='h-full w-full object-cover'
-                src='/img/pizza.jpg'
+                src={faker.image.urlLoremFlickr({ category: 'food' })}
                 alt=''
               />
-            </div> */}
+            </div>
             <div className='item__details__title'>
               <div className='font-bold'>Dish Name</div>
               <div className='text-sm'>Quantity</div>
@@ -33,13 +34,13 @@ const Order = () => {
         <AccordionContent>
           <div className='item flex flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
             <div className='flex flex-row items-center gap-5'>
-              {/* <div className=' h-[15vh] w-[15vh]'>
+              <div className=' h-[15vh] w-[15vh]'>
                 <img
                   className='h-full w-full object-cover'
-                  src='/img/pizza.jpg'
+                  src={faker.image.urlLoremFlickr({ category: 'food' })}
                   alt=''
                 />
-              </div> */}
+              </div>
               <div className='item__details__title'>Dish Name</div>
             </div>
             <div className='item__details__price'>Price</div>

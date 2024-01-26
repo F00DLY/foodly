@@ -28,11 +28,9 @@ const RestNav = ({ params }) => {
   // }
   return (
     <div className='w-[100%] h-20 flex flex-row justify-around align-middle'>
-      <Link href='/'>
-        <div className='logo flex flex-row justify-between align-middle overflow-hidden'>
-          <Image src='/img/logo.png' width={160} height={80} />
-        </div>
-      </Link>
+      <div className='logo flex flex-row justify-between align-middle overflow-hidden'>
+        <Image src='/img/logo.png' width={160} height={80} />
+      </div>
       <div className='flex flex-row justify-evenly items-center text-2xl w-[50%]'>
         <Link href='/restaurant/orders'>
           <span className='hover:scale-105 '>Orders</span>

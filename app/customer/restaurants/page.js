@@ -13,7 +13,7 @@ const Restaurants = () => {
         const response = await axios.post(endpoint);
         const names = response.data.restaurants;
         setRestaurantNames(names);
-        console.log('Restaurant names:', names);
+        // console.log('Restaurant names:', names);
       } catch (error) {
         console.error('Error fetching restaurant names:', error.message);
       }

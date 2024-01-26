@@ -36,8 +36,8 @@ const Restaurant = () => {
       if (response.ok) {
         // Handle successful login
         const data = await response.json();
-        console.log('data');
-        console.log(data.data.restaurant);
+        // console.log('data');
+        // console.log(data.data.restaurant);
         toast.success('User logged in successfully');
 
         window.location.replace(

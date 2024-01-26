@@ -1,5 +1,6 @@
 'use client';
 import Dish from '@/components/custom/Dish';
+import { faker } from '@faker-js/faker';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
@@ -23,7 +24,9 @@ const Restaurant = ({ params }) => {
 
           const fetchedMenuItems = response.data.menu;
           setMenuItems(fetchedMenuItems);
-          console.log('Menu items:', fetchedMenuItems);
+          // console.log('Menu items:', fetchedMenuItems);
+        } else {
+          console.error('Restaurant name is undefined');
         }
       } catch (error) {
         console.error('Error fetching menu items:', error.message);
@@ -39,7 +42,7 @@ const Restaurant = ({ params }) => {
         <div className='w-full h-[65vh] overflow-hidden'>
           <img
             className='h-full w-full object-cover'
-            src='/img/pizza.jpg'
+            src={faker.image.urlLoremFlickr({ category: 'food' })}
             alt='gvbhjk'
           />
         </div>

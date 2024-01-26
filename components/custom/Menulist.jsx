@@ -32,7 +32,11 @@ const Menulist = ({ restaurantName }) => {
   return (
     <div className='flex flex-col w-full mb-10 min-h-40'>
       {menuItems.map((menuItem) => (
-        <MenuItem key={menuItem._id} menuItem={menuItem} />
+        <MenuItem
+          key={menuItem._id}
+          menuItem={menuItem}
+          Restaurantname={restaurantName}
+        />
       ))}
     </div>
   );

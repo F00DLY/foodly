@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle } from '../ui/card';
+import { faker } from '@faker-js/faker';
 import Link from 'next/link';
 import axios from 'axios';
 
@@ -29,7 +30,7 @@ const DishList = () => {
         const response = await axios.post(
           'http://localhost:8000/api/v1/restaurant/show-menu',
           {
-            Restaurantname: restaurantNames[1].name, // Specify the restaurant name
+            Restaurantname: restaurantNames[1].name,
           }
         );
 
@@ -49,7 +50,7 @@ const DishList = () => {
         <Card className='w-[20%] md:flex flex-col hidden hover:scale-105 h-[40vh] backsec text-white overflow-hidden'>
           <img
             className='h-[30vh] w-full object-cover'
-            src='img/pizza.jpg'
+            src={faker.image.urlLoremFlickr({ category: 'food' })}
             alt=''
           />
           <CardHeader className='h-[10vh] items-center justify-center p-0'>
@@ -61,7 +62,7 @@ const DishList = () => {
         <Card className='w-[20%] md:flex flex-col hidden h-[40vh] hover:scale-105  backsec text-white overflow-hidden'>
           <img
             className='h-[30vh] w-full object-cover'
-            src='img/pizza.jpg'
+            src={faker.image.urlLoremFlickr({ category: 'food' })}
             alt=''
           />
           <CardHeader className='h-[10vh] items-center justify-center p-0'>
@@ -73,12 +74,12 @@ const DishList = () => {
         <Card className='md:w-[20%] w-[40%] h-[40vh] hover:scale-105 backsec text-white overflow-hidden'>
           <img
             className='h-[30vh] w-full object-cover'
-            src='img/pizza.jpg'
+            src={faker.image.urlLoremFlickr({ category: 'food' })}
             alt=''
           />
           <CardHeader className='h-[10vh] items-center justify-center p-0'>
             <CardTitle className='text-2xl font-bold p-0'>
-              {menuItems[0].name}
+              {menuItems[2].name}
             </CardTitle>
           </CardHeader>
         </Card>
@@ -107,7 +108,6 @@ const DishList = () => {
       </div>
     );
   } else {
-    // Render a loading state or placeholder while waiting for data
     return <div>Loading...</div>;
   }
 };

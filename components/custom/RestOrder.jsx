@@ -1,4 +1,5 @@
 'use client';
+import { faker } from '@faker-js/faker';
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +24,7 @@ const RestOrder = () => {
             <div className=' h-[15vh] w-[15vh]'>
               <img
                 className='h-full w-full object-cover'
-                src='/img/pizza.jpg'
+                src={faker.image.urlLoremFlickr({ category: 'food' })}
                 alt=''
               />
             </div>
@@ -40,7 +41,7 @@ const RestOrder = () => {
               <div className=' h-[15vh] w-[15vh]'>
                 <img
                   className='h-full w-full object-cover'
-                  src='/img/pizza.jpg'
+                  src={faker.image.urlLoremFlickr({ category: 'food' })}
                   alt=''
                 />
               </div>
