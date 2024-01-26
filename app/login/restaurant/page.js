@@ -41,7 +41,7 @@ const Restaurant = () => {
         toast.success('User logged in successfully');
 
         window.location.replace(
-          '/restaurant/orders/' + data.data.restaurant.Restaurantname
+          '/restaurant/menu/' + data.data.restaurant.Restaurantname
         );
       } else {
         // Handle login error
