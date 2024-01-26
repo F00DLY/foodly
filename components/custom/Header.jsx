@@ -47,7 +47,7 @@ const Header = () => {
           <Image src='/img/logo.png' width={180} height={100} />
         </div>
       </Link>
-      <div className='flex flex-row justify-evenly items-center text-2xl w-[50%]'>
+      <div className='md:flex hidden flex-row justify-evenly items-center text-2xl  w-[50%]'>
         <Link href='/'>
           <span className='hover:scale-105 font-bold'>Home</span>
         </Link>
