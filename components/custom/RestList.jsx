@@ -23,7 +23,7 @@ const RestList = () => {
 
     fetchRestaurantNames();
   }, []);
-  if (restaurantNames[0]) {
+  if (restaurantNames[2]) {
     return (
       <div className=' min-h-40vh backprim shadow-2xl w-[90%] flex flex-row items-center justify-evenly object-right mr-[10%] rounded-r-xl py-10 my-24'>
         <Card className='w-[20%] md:flex flex-col hidden hover:scale-105 h-[40vh] backsec text-white overflow-hidden border-0'>
@@ -70,7 +70,7 @@ const RestList = () => {
         </Card>
         <CardHeader className='min-h-[30vh] md:w-[20%] w-[40%] justify-between p-0'>
           <CardTitle className='text-4xl font-bold p-0 forsec'>
-            AND MANY MORE
+            AND MANY MORE PLACES
           </CardTitle>
           <Link href='/customer/restaurants'>
             <div className='h-[8vh] hover:scale-105 w-[100%] flex flex-row justify-between p-2 items-center backsec rounded-[5vh]'>

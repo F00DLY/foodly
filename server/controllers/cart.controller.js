@@ -1,3 +1,4 @@
+import { Restaurant } from '../models/Restaurant.model.js';
 import { Cart } from '../models/cart.model.js';
 import { Menu } from '../models/menu.model.js';
 
@@ -25,7 +26,7 @@ const creatcart = asynchandler(async (req, res) => {
     await newCart.save();
     return res.status(200).json(new Apiresponse(201, 'new cart created'));
   } catch (error) {
-    console.log(error);
+    console.error('Error in Create Cart Controller:', error);
     throw new ApiError(500, 'server problem');
   }
 });
@@ -60,7 +61,28 @@ const additem = asynchandler(async (req, res) => {
   if (!menuItem) {
     throw new ApiError(404, 'Menu item not found in the menu.');
   }
+  const menuname = menuItem.name;
+  if (!menuname) {
+    throw new ApiError(404, ' item name not found in the menu.');
+  }
+  const menuprice = menuItem.price;
+  if (!menuprice) {
+    throw new ApiError(404, ' item name not found in the menu.');
+  }
+  const resturentid = menu.restaurantId;
 
+  if (!resturentid) {
+    throw new ApiError(404, ' resturent id not found in the menu.');
+  }
+  const restaurant = await Restaurant.findById(resturentid);
+  if (!restaurant) {
+    throw new ApiError(404, ' resturent  not found in the menu.');
+  }
+  const restaurantname = restaurant.Restaurantname;
+
+  if (!restaurantname) {
+    throw new ApiError(404, ' resturent name not found in the menu.');
+  }
   const existingCartItemIndex = userCart.items.findIndex(
     (item) => item && item.menuItemId && item.menuItemId.equals(menuItemId)
   );
@@ -68,7 +90,13 @@ const additem = asynchandler(async (req, res) => {
   if (existingCartItemIndex !== -1) {
     userCart.items[existingCartItemIndex].quantity += quantity;
   } else {
-    userCart.items.push({ productId: menuItem._id, quantity });
+    userCart.items.push({
+      productId: menuItem._id,
+      quantity,
+      menuname: menuItem.name,
+      resturentname: restaurant.Restaurantname,
+      menuprice: menuItem.price,
+    });
   }
 
   await userCart.save();
@@ -113,12 +141,41 @@ const removecartitem = asynchandler(async (req, res) => {
         .status(error.statusCode)
         .json({ success: false, message: error.message });
     } else {
-      return res.status(500).json({
-        success: false,
-        message: 'Internal server error. Please try again later.',
-      });
+      return res
+        .status(500)
+        .json({
+          success: false,
+          message: 'Internal server error. Please try again later.',
+        });
     }
   }
 });
 
-export { creatcart, additem, removecartitem };
+const showcart = asynchandler(async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    if (!userId) {
+      throw new ApiError(400, 'user id not found');
+    }
+
+    const cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      userCart = await Cart.create({ user: userId, items: [] });
+    }
+
+    return res.status(200).json({
+      success: true,
+      cartitem: cart.items,
+    });
+  } catch (error) {
+    console.error('Error in Show cart Controller:', error);
+    if (error instanceof ApiError) {
+      throw error;
+    } else {
+      throw new ApiError(500, 'Internal server error. Please try again later.');
+    }
+  }
+});
+
+export { creatcart, additem, removecartitem, showcart };

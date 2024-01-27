@@ -73,12 +73,18 @@ const RestNav = ({ name }) => {
           <DropdownMenuContent className='w-[30vh]'>
             <DropdownMenuLabel>{name}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem href={'/restaurant/menu/' + name}>
-              Menu
-            </DropdownMenuItem>
-            <DropdownMenuItem href={'/restaurant/orders/' + name}>
-              Orders
-            </DropdownMenuItem>
+            <Link href={'/restaurant/profile'}>
+              <DropdownMenuItem href={'/restaurant/profile'}>
+                My Profile
+              </DropdownMenuItem>
+            </Link>
+            <Link href={'/restaurant/menu/' + name}>
+              <DropdownMenuItem>Menu</DropdownMenuItem>
+            </Link>
+            <Link href={'/restaurant/orders/' + name}>
+              <DropdownMenuItem>Orders</DropdownMenuItem>
+            </Link>
+            <DropdownMenuSeparator />
             <DropdownMenuItem>
               <button onClick={handleLogout}>Logout</button>
             </DropdownMenuItem>

@@ -84,7 +84,7 @@ const Dish = ({ menuItem }) => {
       {user != null && (
         <button
           onClick={addCart}
-          class='bg-black text-white h-8 w-8 border-2 border-black text-lg'
+          class='bg-black text-white p-1 border-2 border-black text-lg'
         >
           Add to cart
         </button>

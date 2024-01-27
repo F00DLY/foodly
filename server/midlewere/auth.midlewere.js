@@ -9,35 +9,23 @@ export const verifyjwt = asynchandler(async (req, res, next) => {
       req.cookies?.accessToken ||
       req.header('Authorization')?.replace('Bearer', '');
 
-    // Log token for debugging
-    console.log('||||Token||||');
-    console.log(token);
-
-    // Check if the token is present
+    console.log(token, 'token is found');
     if (!token) {
-      throw new ApiError(401, 'Unauthorized request: Token is missing');
+      throw new ApiError(401, 'unauthorized request');
     }
 
-    // Verify the token
     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-    // Log decoded token for debugging
-    console.log('Decoded Token:', decodedToken);
-
-    // Check if the user exists based on the decoded token
     const user = await User.findById(decodedToken?._id).select(
       '-password -refreshToken'
     );
     if (!user) {
-      throw new ApiError(401, 'Invalid access token: User not found');
+      throw new ApiError(401, 'invalid Access token');
     }
-    console.log('User:', user);
 
-    // Attach user information to the request
     req.user = user;
     next();
   } catch (error) {
-    console.error('Error during token verification:', error);
-    throw new ApiError(401, 'Invalid access token');
+    throw new ApiError(401, 'invalid  access token request');
   }
 });

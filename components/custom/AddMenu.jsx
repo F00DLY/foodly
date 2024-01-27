@@ -61,32 +61,6 @@ const AddMenu = ({ name }) => {
       console.error('Menu add failed:', error);
       toast.error('Menu add failed ' + error.message);
     }
-    // try {
-    //   const response = await fetch(
-    //     'http://localhost:8000/api/v1/restaurant/menu-update',
-    //     {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify(formData),
-    //     }
-    //   );
-
-    //   if (!response.ok) {
-    //     const errorData = await response.json();
-    //     console.error('Menu update failed:', errorData);
-    //     alert('Menu update failed' + errorData.message);
-    //   } else {
-    //     const responseData = await response.json();
-    //     // console.log('Menu updated successfully:', responseData);
-    //     toast.success('Menu updated successfully');
-    //     window.location.reload();
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   alert('Error during menu update' + error.message);
-    // }
   };
 
   return (

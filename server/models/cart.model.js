@@ -11,6 +11,18 @@ const CartItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    menuname:{
+        type:String
+    },
+    resturentid:{
+        type:String
+    },
+    resturentname:{
+        type:String
+    },
+    menuprice:{
+        type:String
+    }
 });
 
 const CartSchema = new mongoose.Schema(

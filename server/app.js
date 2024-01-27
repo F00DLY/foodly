@@ -1,29 +1,32 @@
-import cookieParser from 'cookie-parser';
-import express from 'express';
-import cors from 'cors';
+import cookieParser from "cookie-parser";
+import express from "express";
+import cors from "cors"
 
 const app = express();
+app.use(cors());
+app.use(express.json({limit:"16kb"}))
+app.use(express.urlencoded.apply({extended:true,limit:"16kb"}))
+app.use(express.static("public"))
+app.use(cookieParser())
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000', // Replace with your client's URL
-    credentials: true,
-  })
-);
-app.use(express.json({ limit: '16kb' }));
-app.use(express.urlencoded.apply({ extended: true, limit: '16kb' }));
-app.use(express.static('public'));
-app.use(cookieParser());
+
 
 // routes
 
-import userRouter from './routes/user.routes.js';
-import restaurantRouter from './routes/Restaurant.routes.js';
-import cartRouter from './routes/cart.routes.js';
+import userRouter from "./routes/user.routes.js"
+import restaurantRouter from "./routes/Restaurant.routes.js"
+import cartRouter from "./routes/cart.routes.js"
+import orderRouter from "./routes/order.routes.js"
+
+
 
 //routes declaration
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/restaurant', restaurantRouter);
-app.use('/api/v1/cart', cartRouter);
+app.use("/api/v1/users",userRouter)
+app.use("/api/v1/restaurant",restaurantRouter)
+app.use("/api/v1/cart",cartRouter)
+app.use("/api/v1/order",orderRouter)
 
-export { app };
+
+
+
+export {app};

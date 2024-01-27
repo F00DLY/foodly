@@ -70,9 +70,6 @@ const Header = () => {
         <Link href='/customer/restaurants'>
           <span className='hover:scale-105 '>Restaurants</span>
         </Link>
-        <Link href='/customer/orders'>
-          <span className='hover:scale-105 '>Orders</span>
-        </Link>
         {cookies === undefined ? (
           <>
             <Link href='/register/customer'>
@@ -83,7 +80,14 @@ const Header = () => {
             </Link>
           </>
         ) : (
-          <></>
+          <>
+            <Link href='/customer/orders'>
+              <span className='hover:scale-105 '>Orders</span>
+            </Link>
+            <Link href='/customer/cart'>
+              <span className='hover:scale-105 '>Cart</span>
+            </Link>
+          </>
         )}
       </div>
       <DropdownMenu className='w-[20%]'>
@@ -99,9 +103,6 @@ const Header = () => {
           <Link href='/customer/restaurants'>
             <DropdownMenuItem>Restaurants</DropdownMenuItem>
           </Link>
-          <Link href='/customer/orders'>
-            <DropdownMenuItem>Orders</DropdownMenuItem>
-          </Link>
           {cookies === undefined ? (
             <>
               <Link href='/register/customer'>
@@ -112,9 +113,17 @@ const Header = () => {
               </Link>
             </>
           ) : (
-            <DropdownMenuItem>
-              <button onClick={handleLogout}>Logout</button>
-            </DropdownMenuItem>
+            <>
+              <Link href='/customer/profile'>
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+              </Link>
+              <Link href='/customer/orders'>
+                <DropdownMenuItem>Orders</DropdownMenuItem>
+              </Link>
+              <DropdownMenuItem>
+                <button onClick={handleLogout}>Logout</button>
+              </DropdownMenuItem>
+            </>
           )}
 
           {/* */}

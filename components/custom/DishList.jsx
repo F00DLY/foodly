@@ -44,7 +44,7 @@ const DishList = () => {
 
     fetchMenuItems();
   }, [restaurantNames]);
-  if (restaurantNames[0] && menuItems[0]) {
+  if (restaurantNames[1] && menuItems[2]) {
     return (
       <div className=' min-h-40vh bg-white shadow-2xl w-[90%] flex flex-row items-center justify-evenly object-right ml-[10%] rounded-l-xl py-10 mb-24 mt-10'>
         <Card className='w-[20%] md:flex flex-col hidden hover:scale-105 h-[40vh] backsec text-white overflow-hidden'>
