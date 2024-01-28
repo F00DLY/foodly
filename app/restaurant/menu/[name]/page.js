@@ -28,7 +28,8 @@ import RestNav from '@/components/custom/RestNav';
 
 const Menu = ({ params }) => {
   const name = Cookies.get('name');
-  const id = Cookies.get('user');
+
+  // const id = Cookies.get('user');
 
   return (
     <>

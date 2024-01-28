@@ -1,7 +1,6 @@
 'use client';
 // pages/cart.js
 import CartItem from '@/components/custom/CartItem';
-import { faker, tr } from '@faker-js/faker';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import React, { useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import { toast } from 'react-toastify';
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [rearrangedData, setRearrangedData] = useState([]);
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -61,6 +61,40 @@ const CartPage = () => {
     console.log('rearrangedData');
     console.log(rearrangedData);
   };
+  const handleOrder = async (item) => {
+    item.items.forEach((item) => {
+      Order(item);
+    });
+    window.location.reload();
+  };
+  const Order = async (item) => {
+    console.log('item');
+    console.log(item);
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/api/v1/order/order-now',
+        {
+          productId: item.productId,
+          address: address,
+          quantity: item.quantity,
+        },
+        {
+          headers: {
+            Authorization: 'Bearer' + Cookies.get('accessToken'),
+          },
+        }
+      );
+      if (response.status === 201) {
+        toast.success('order successfully');
+        console.log(response.data);
+      } else {
+        toast.error(response.data.message);
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -76,13 +110,22 @@ const CartPage = () => {
     console.log(rearrangedData);
     return (
       <div className='container mx-auto p-4'>
-        <h2 className='text-2xl font-semibold mb-4'>Your Cart</h2>
+        <div className='flex flex-row px-3 justify-between items-center'>
+          <h2 className='text-2xl font-semibold mb-4'>Your Cart</h2>
+          <input
+            type='text'
+            placeholder='Enter your address'
+            className='border-2 border-gray-300 rounded-md p-2'
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
         {rearrangedData.map((item) => (
           <>
-            <h2 className='text-2xl font-semibold mt-14'>
-              {item.resturentname}
-            </h2>
-            <div className='flex flex-col w-full '>
+            <div className='flex flex-row px-3 justify-between items-center mt-14'>
+              <h2 className='text-2xl font-semibold'>{item.resturentname}</h2>
+              <button onClick={() => handleOrder(item)}>Order now</button>
+            </div>
+            <div className='flex flex-col w-full mt-4 '>
               {item.items.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}

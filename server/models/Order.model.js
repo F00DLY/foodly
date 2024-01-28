@@ -8,6 +8,9 @@ const OrderSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        username:{
+            type:String
+        },
         customer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
@@ -15,8 +18,7 @@ const OrderSchema = new mongoose.Schema(
         },
         quantity: {
             type: Number,
-            default: [],
-
+            
         },
         product:{
             type: String,
@@ -37,6 +39,9 @@ const OrderSchema = new mongoose.Schema(
         cart: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Cart",
+        },
+        restaurantid:{
+            type:String
         },
         Resturantname:{
             type:String
