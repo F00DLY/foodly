@@ -31,10 +31,8 @@ const Restaurant = () => {
 
       if (response.status === 200) {
         // Handle successful login
-        Cookies.set('user', response.data.data.restaurant._id);
         Cookies.set('name', response.data.data.restaurant.Restaurantname);
         Cookies.set('accessToken', response.data.data.accessToken);
-        Cookies.set('refreshToken', response.data.data.refreshToken);
 
         toast.success('User logged in successfully');
         window.location.replace(

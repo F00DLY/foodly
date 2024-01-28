@@ -29,10 +29,8 @@ const RestNav = ({ name }) => {
       if (response.status === 200) {
         // Handle successful login
         console.log(response.data.data);
-        Cookies.remove('user');
         Cookies.remove('name');
         Cookies.remove('accessToken');
-        Cookies.remove('refreshToken');
         toast.success('User logged out successfully');
         window.location.replace('/');
       } else {

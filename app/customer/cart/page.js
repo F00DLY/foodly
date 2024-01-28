@@ -66,7 +66,9 @@ const CartPage = () => {
     return (
       <div className='container mx-auto p-4'>
         <h2 className='text-2xl font-semibold mb-4'>Your Cart</h2>
-        <p className='min-h-20'>Your cart is empty</p>
+        <p className='min-h-20 text-2xl font-bold content-center text-center'>
+          Your cart is empty
+        </p>
       </div>
     );
   } else {

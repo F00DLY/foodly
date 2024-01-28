@@ -17,7 +17,8 @@ import { toast } from 'react-toastify';
 
 const Header = () => {
   // parse cookies string to object
-  const cookies = Cookies.get('user');
+  const [cookies, setCookies] = React.useState(Cookies.get('name'));
+
   const handleLogout = async () => {
     try {
       console.log('Attempting logout...');
@@ -32,11 +33,9 @@ const Header = () => {
         }
       );
 
-      Cookies.remove('user');
       Cookies.remove('name');
       Cookies.remove('accessToken');
-      Cookies.remove('refreshToken');
-
+      setCookies(undefined);
       console.log('Logout response:', response);
 
       if (response.status === 200) {

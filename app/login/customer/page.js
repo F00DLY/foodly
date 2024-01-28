@@ -32,10 +32,8 @@ const Customer = () => {
       if (response.status === 201) {
         // Handle successful login
         console.log(response.data.data.user);
-        Cookies.set('user', response.data.data.user._id);
         Cookies.set('name', response.data.data.user.name);
         Cookies.set('accessToken', response.data.data.accessToken);
-        Cookies.set('refreshToken', response.data.data.refreshToken);
 
         toast.success('User logged in successfully');
         window.location.replace('/');
