@@ -25,9 +25,11 @@ const Restaurants = () => {
   // Call the function to get restaurant names
   return (
     <div className='flex flex-row flex-wrap justify-around'>
-      {restaurantNames.map((restaurant) => (
-        <Restaurant key={restaurant._id} name={restaurant.name} />
-      ))}
+      {restaurantNames.map((restaurant) =>
+        restaurant.active && restaurant.varified ? (
+          <Restaurant key={restaurant._id} name={restaurant.name} />
+        ) : null
+      )}
     </div>
   );
 };

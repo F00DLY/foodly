@@ -16,6 +16,7 @@ import {
 import { getResturantname } from '../controllers/resturentname.controller.js';
 import { getresturentprofile } from '../controllers/profileResturent.controller.js';
 import {
+  openorcloseresturent,
   orderstatuschange,
   resturantshoworder,
 } from '../controllers/resturantOrder.controller.js';
@@ -36,5 +37,6 @@ router.route('/profile-delet').post(verifyjwt, deletresturentaccount);
 router.route('/account').post(verifyjwt, getresturentprofile);
 router.route('/resturent-show-order').post(verifyjwt, resturantshoworder);
 router.route('/order-status-change').post(verifyjwt, orderstatuschange);
+router.route('/close-open').post(verifyjwt, openorcloseresturent);
 
 export default router;

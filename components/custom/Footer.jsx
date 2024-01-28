@@ -5,7 +5,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className='w-full flex flex-col items-center justify-evenly backprim p-10 rounded-t-3xl'>
-      <div className='copy flex flex-row justify-around items-center w-[80%] flex-wrap'>
+      <div className='flex flex-row justify-around items-center w-[80%] flex-wrap'>
         <Link href='/'>
           <div className='logo flex flex-row justify-evenly gap-5 items-center overflow-hidden my-5'>
             <Image src='/img/logo.svg' width={80} height={100} />
@@ -21,6 +21,9 @@ const Footer = () => {
           />
         </div>
       </div>
+      <Link href='/admin/login'>
+        <span className='h-16 w-16 bg-transparent text-black'>A</span>
+      </Link>
     </div>
   );
 };

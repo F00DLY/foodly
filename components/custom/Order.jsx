@@ -19,7 +19,7 @@ const Order = ({ item }) => {
   return (
     <Accordion type='single' collapsible>
       <AccordionItem value='item-1'>
-        <AccordionTrigger className='item flex flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
+        <AccordionTrigger className='item hover:no-underline flex flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
           <div className='flex flex-row items-center justify-around gap-5 flex-wrap'>
             <div className=' h-[15vh] w-[15vh]'>
               <img
@@ -32,7 +32,10 @@ const Order = ({ item }) => {
               <div className='font-bold'>{item.Resturentname}</div>
             </div>
           </div>
-          <div className='item__details__price'>Rs.{total}</div>
+          <div className='item__details__title'>
+            <div className='font-bold'>Location: {item.address}</div>
+          </div>
+
           <div class='flex gap-3 items-center'>{items[0].status}</div>
         </AccordionTrigger>
         <AccordionContent>
@@ -58,8 +61,9 @@ const Order = ({ item }) => {
               </div>
             );
           })}
-          {/* <div className='foot flex flex-row items-center justify-between px-5 h-[10vh]'>
-            <div className='text-2xl'>Rate your experience:</div>
+          <div className='foot flex flex-row items-center justify-between px-5 h-[10vh]'>
+            <div className='item__details__price'>Rs.{total}</div>
+            {/* <div className='text-2xl'>Rate your experience:</div>
             <div className='star-rating'>
               {[...Array(5)].map((star, index) => {
                 index += 1;
@@ -79,8 +83,8 @@ const Order = ({ item }) => {
                   </button>
                 );
               })}
-            </div>
-          </div> */}
+            </div> */}
+          </div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

@@ -1,4 +1,5 @@
 'use client';
+import LiveRestOrder from '@/components/custom/LiveRestOrder';
 import OrderRest from '@/components/custom/OrderRest';
 import RestNav from '@/components/custom/RestNav';
 import axios from 'axios';
@@ -46,28 +47,32 @@ const Orders = () => {
     list.forEach((item) => {
       // Check if there's already an entry for the restaurant in newData and oldData
       if (item.status === 'PENDING') {
-        const existingCustomer = liveData.find(
-          (entry) => entry.username === item.username
+        const existingOrder = liveData.find(
+          (entry) =>
+            entry.username === item.username && item.address === entry.address
         );
 
-        if (existingCustomer) {
-          existingCustomer.items.push(item);
+        if (existingOrder) {
+          existingOrder.items.push(item);
         } else {
           liveData.push({
             username: item.username,
+            address: item.address,
             items: [item],
           });
         }
       } else {
-        const existingCustomer = oldData.find(
-          (entry) => entry.username === item.username
+        const existingOrder = oldData.find(
+          (entry) =>
+            entry.username === item.username && item.address === entry.address
         );
 
-        if (existingCustomer) {
-          existingCustomer.items.push(item);
+        if (existingOrder) {
+          existingOrder.items.push(item);
         } else {
           oldData.push({
             username: item.username,
+            address: item.address,
             items: [item],
           });
         }
@@ -84,13 +89,13 @@ const Orders = () => {
       <h2 className='px-3 text-3xl my-5'>Live Orders</h2>
       <div className='flex flex-col w-full mb-10'>
         {liveData.map((item) => (
-          <OrderRest key={item.username} item={item} />
+          <LiveRestOrder key={item.items[0]._id} item={item} />
         ))}
       </div>
       <h2 className=' px-3 text-3xl my-5'>Past Orders</h2>
       <div className='flex flex-col w-full mb-10'>
         {oldData.map((item) => (
-          <OrderRest key={item.username} item={item} />
+          <OrderRest key={item.items[0]._id} item={item} />
         ))}
       </div>
     </>

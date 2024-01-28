@@ -18,7 +18,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 
-const OrderRest = ({ item }) => {
+const LiveRestOrder = ({ item }) => {
   //   const [rating, setRating] = useState(0);
   //   const [hover, setHover] = useState(0);
 
@@ -67,7 +67,7 @@ const OrderRest = ({ item }) => {
   return (
     <Accordion type='single' collapsible>
       <AccordionItem value='item-1'>
-        <AccordionTrigger className='item flex hover:no-underline flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
+        <AccordionTrigger className=' hover:no-underline item flex flex-row items-center justify-between p-5 backback border-b-2 border-gray-200 text-black w-full '>
           <div className='flex flex-row items-center justify-around gap-5 flex-wrap'>
             <div className=' h-[15vh] w-[15vh]'>
               <img
@@ -81,10 +81,7 @@ const OrderRest = ({ item }) => {
             </div>
           </div>
           <div className='item__details__title'>
-            <div className='font-bold'>Location: {item.address}</div>
-          </div>
-          <div className='item__details__title'>
-            <div className='font-bold'>Status: {items[0].status}</div>
+            <div className='font-bold'>Location: {items[0].address}</div>
           </div>
         </AccordionTrigger>
         <AccordionContent>
@@ -136,4 +133,4 @@ const OrderRest = ({ item }) => {
   );
 };
 
-export default OrderRest;
+export default LiveRestOrder;

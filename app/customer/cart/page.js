@@ -65,7 +65,7 @@ const CartPage = () => {
     item.items.forEach((item) => {
       Order(item);
     });
-    window.location.reload();
+    toast.success('order successfully');
   };
   const Order = async (item) => {
     console.log('item');
@@ -85,8 +85,8 @@ const CartPage = () => {
         }
       );
       if (response.status === 201) {
-        toast.success('order successfully');
-        console.log(response.data);
+        // toast.success('order successfully');
+        // console.log(response.data);
       } else {
         toast.error(response.data.message);
         console.log(response.data.message);

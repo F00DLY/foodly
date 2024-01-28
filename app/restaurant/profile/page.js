@@ -9,6 +9,7 @@ import RestPassChange from '@/components/custom/RestPassChange';
 
 const Profile = () => {
   const [user, setUser] = useState('');
+  const [activate, setActivate] = useState(user.active);
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -21,7 +22,8 @@ const Profile = () => {
             },
           }
         );
-        if (res.data.statusCode === 'success') {
+        console.log(' ||||||||||', res);
+        if (res.data.statusCode === 200) {
           toast.success('Welcome');
           // console.log(res.data);
           setUser(res.data.message);
@@ -35,6 +37,54 @@ const Profile = () => {
     };
     getProfile();
   }, []);
+
+  const openShop = async () => {
+    try {
+      const res = await axios.post(
+        'http://localhost:8000/api/v1/restaurant/close-open',
+        {
+          active: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer${Cookies.get('accessToken')}`,
+          },
+        }
+      );
+      console.log(res);
+      if (res.status === 200) {
+        setActivate(true);
+        toast.success('Opened');
+      } else {
+        console.log(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const closeShop = async () => {
+    try {
+      const res = await axios.post(
+        'http://localhost:8000/api/v1/restaurant/close-open',
+        {
+          active: false,
+        },
+        {
+          headers: {
+            Authorization: `Bearer${Cookies.get('accessToken')}`,
+          },
+        }
+      );
+      if (res.status === 200) {
+        toast.success('Closed');
+        setActivate(false);
+      } else {
+        console.log(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -60,8 +110,26 @@ const Profile = () => {
             {user.mobail}
           </div>
         </div>
+        <div className='flex flex-col items-center justify-evenly h-[20vh] '>
+          <h3 className=' text-lg w-[80%] text-left font-semibold'>Status:</h3>
+        </div>
       </div>
       <div className='flex flex-col items-center justify-evenly h-[30vh]'>
+        {activate === true ? (
+          <button
+            className='border-[1px] hover:scale-105 shadow-md bg-white w-[80%]  border-gray-400 mx-auto rounded-md font-semibold py-2 px-4  h-12'
+            onClick={closeShop}
+          >
+            Close
+          </button>
+        ) : (
+          <button
+            className='border-[1px] hover:scale-105 shadow-md bg-white w-[80%]  border-gray-400 mx-auto rounded-md font-semibold py-2 px-4  h-12'
+            onClick={openShop}
+          >
+            Open
+          </button>
+        )}
         <RestPassChange />
         <DeleteRest />
       </div>

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const RestaurantSchema = new mongoose.Schema(
   {
@@ -17,7 +17,15 @@ const RestaurantSchema = new mongoose.Schema(
       lowercase: true,
       unique: true,
       trim: true,
-      match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
+      match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
+    },
+    active: {
+      type: Boolean,
+      default: false,
+    },
+    varified: {
+      type: Boolean,
+      default: false,
     },
     password: {
       type: String,
@@ -28,13 +36,12 @@ const RestaurantSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    
   },
   { timestamps: true }
 );
 
-RestaurantSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+RestaurantSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 10); // Fix: Use await to handle the async bcrypt.hash
   next();
 });
@@ -68,4 +75,4 @@ RestaurantSchema.methods.generateRefreshToken = async function () {
   );
 };
 
-export const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+export const Restaurant = mongoose.model('Restaurant', RestaurantSchema);
