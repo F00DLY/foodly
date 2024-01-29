@@ -40,6 +40,17 @@ Make sure you have the following installed on your machine:
 
 6. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to see the result.
 
+#### Admin User and Password:
+
+##### Admin button is made visible in the footer
+
+- **Email:**
+
+  - pawankumarlimba746@gmail.com
+
+- **Password:**
+  - 12345
+
 ## Features
 
 ### Implemented Features:
@@ -50,6 +61,11 @@ Make sure you have the following installed on your machine:
 
   - Register and log in to your account.
   - View and update your profile.
+
+- **Cart and Checkout:**
+
+  - Allow students to review their selected items in the cart.
+  - Implement a checkout process for placing orders.
 
 - **Browse Restaurants:**
 
@@ -67,18 +83,40 @@ Make sure you have the following installed on your machine:
 
   - Add, update, or remove items from the restaurant menu.
 
+- **Enhanced Restaurant Order Management:**
+
+  - Provide a comprehensive view of order details for restaurants.
+  - Allow restaurants to update order status to reflect progress (e.g., pending, on the way).
+
+### Additional Features:
+
+- **Profile Pages for Users and Restaurants:**
+  - Dedicated profile pages for both students and restaurant owners.
+  - Capability to view personal details and update passwords, enhancing account security and customization.
+
+### Admin Dashboard Features:
+
+- **Restaurant Verification:**
+  - Provide the admin with a list of registered restaurants awaiting verification.
+  - Implement functionality for the admin to approve or reject restaurant registrations based on predefined criteria.
+
 ### Features Yet to be Implemented:
 
 As Foodly is currently in the prototype stage, some features are yet to be implemented. We plan to enhance the app with the following features in future updates:
 
-- **Cart and Checkout:**
+- **Secure Transactions:**
 
-  - Allow students to review their selected items in the cart.
-  - Implement a checkout process for placing orders.
+  - Implement a secure payment gateway to facilitate transactions between users and restaurants.
+  - Ensure compliance with industry standards for payment security to protect user data and financial information.
 
-- **Enhanced Restaurant Order Management:**
-  - Provide a comprehensive view of order details for restaurants.
-  - Allow restaurants to update order status to reflect progress (e.g., pending, on the way).
+- **Order Management:**
+
+  - Develop order tracking and management capabilities to enable users to monitor the status of their transactions.
+  - Implement features for refunds, order history, and receipts to enhance transparency and accountability.
+
+- **Convenience and Accessibility:**
+  - Enable users to log in to Foodly using their existing Google accounts, streamlining the authentication process.
+  - Reduce friction during the sign-up/login process by offering a familiar and convenient login option.
 
 ## Team Members
 

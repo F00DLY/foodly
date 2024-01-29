@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </div>
       <Link href='/admin/login'>
-        <span className='h-16 w-16 bg-transparent text-black'>A</span>
+        <span className='h-16 bg-white text-black'>Admin: made visible</span>
       </Link>
     </div>
   );
