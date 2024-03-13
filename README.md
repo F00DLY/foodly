@@ -137,6 +137,6 @@ As Foodly is currently in the prototype stage, some features are yet to be imple
 
 ---
 
-If you have any questions or suggestions, feel free to [open an issue](https://github.com/lazy-taurus/foodly/issues) or [contact me](vardanrastogi1@gmail.com).
+If you have any questions or suggestions, feel free to [open an issue](https://github.com/F00DLY/foodly/issues) or [contact me](vardanrastogi1@gmail.com).
 
 ---
