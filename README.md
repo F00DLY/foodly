@@ -120,12 +120,12 @@ As Foodly is currently in the prototype stage, some features are yet to be imple
 
 ## Team Members
 
-### Frontend Developer:
+### FullStack Developer:
 
 - **Name:** Vardan Rastogi
 - **Enrollment Number:** 22UME119
 
-### Backend Developer:
+### FullStack Developer:
 
 - **Name:** Pawan Kumar
 - **Enrollment Number:** 22UEE187
